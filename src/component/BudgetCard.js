@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Card, ProgressBar, Stack } from 'react-bootstrap'
 import { currencyFormatter } from '../utils'
 
-export default function BudgetCard({name,amount,max,gray}) {
+export default function BudgetCard({name,amount,max,gray,onAddExpenseClick}) {
 
   const classNames = []
 
@@ -33,7 +33,7 @@ export default function BudgetCard({name,amount,max,gray}) {
            max = {max}
            />
            <Stack direction="horizontal" gap="2" className='mt-4 d-flex justify-content-end' >
-            <Button variant='outline-primary'>Add Expenses</Button>
+            <Button variant='outline-primary' onClick={onAddExpenseClick}>Add Expenses</Button>
             <Button variant='outline-secondary'>View Expenses</Button>
            </Stack>
         </Card.Body>
