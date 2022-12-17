@@ -17,9 +17,11 @@ export default function UncategorizedBudgetCard({props}) {
     <BudgetCard 
     name="Uncategorized"
     amount = { amount }
+    
     gray
     {...props}
     />
   )
 
   }
+
