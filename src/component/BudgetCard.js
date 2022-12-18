@@ -2,7 +2,8 @@ import React from 'react'
 import { Button, Card, ProgressBar, Stack } from 'react-bootstrap'
 import { currencyFormatter } from '../utils'
 
-export default function BudgetCard({name,amount,max,gray,onAddExpenseClick, hideButtons}) {
+export default function BudgetCard({name,amount,max,gray,
+  onAddExpenseClick, hideButtons, onViewExpenseClick}) {
 
   const classNames = []
 
@@ -13,9 +14,11 @@ export default function BudgetCard({name,amount,max,gray,onAddExpenseClick, hide
     classNames.push("bg-light")
   }
 
+
+
   return (
     <div>
-      <Card className={classNames.join(" ")}>
+      <Card className = {classNames.join(" ")}>
         <Card.Body>
           <Card.Title className='d-flex justify-content-between 
            align-items-baseline fw-normal mb-3'>
@@ -27,15 +30,15 @@ export default function BudgetCard({name,amount,max,gray,onAddExpenseClick, hide
            </div>
           </Card.Title>
           {max && <ProgressBar className='rounded-pill'
-           variant={getProgressBarVariant(amount,max)}
+           variant={getProgressBarVariant(amount, max)}
            min={0}
            now = {amount}
            max = {max}
            />}
 
-           {!hideButtons && <Stack direction="horizontal" gap="2" className='mt-4 d-flex justify-content-end' >
-            <Button variant='outline-primary' onClick={onAddExpenseClick}>Add Expenses</Button>
-            <Button variant='outline-secondary'>View Expenses</Button>
+           { !hideButtons && <Stack direction="horizontal" gap="2" className='mt-4 d-flex justify-content-end' >
+            <Button variant='outline-primary' onClick = { onAddExpenseClick }>Add Expenses</Button>
+            <Button variant='outline-secondary' onClick = { onViewExpenseClick }>View Expenses</Button>
            </Stack>}
         </Card.Body>
       </Card>
@@ -44,7 +47,7 @@ export default function BudgetCard({name,amount,max,gray,onAddExpenseClick, hide
 }
 
 function getProgressBarVariant(amount, max) {
-  const ratio = amount/max;
+  const ratio = amount / max;
   if (ratio < 0.5 ) return "primary"
   if (ratio < 0.75 ) return "warning"
   return "danger"

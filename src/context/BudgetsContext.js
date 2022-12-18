@@ -15,7 +15,7 @@ export const BudgetsProvider = ({ children }) => {
   const [expenses, setExpenses] = useLocalStorage('expenses',[])
 
   function getBudgetExpenses(budgetId) {
-    console.log(expenses)
+    
     return expenses.filter(expense => expense.budgetId === budgetId)
   }
   function addExpense({ description, amount, budgetId }) {
@@ -33,10 +33,11 @@ export const BudgetsProvider = ({ children }) => {
     })
   }
 
-  function deleteBudget({ id }) {
-  
+  function deleteBudget( {id} ) {
+    
     setBudgets(prevBudgets => {
-      return prevBudgets.filter(budget => budget.id !== id)
+      
+      return prevBudgets.filter(budget => console.log(id))
     })
   }
   function deleteExpense({ id }) {
